@@ -1,0 +1,324 @@
+using System;
+
+namespace ExquisiteCorpse
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {   
+
+
+Console.WriteLine("\nHi there, welcome to Build A Creature. \n\nThis creature is made up of three parts - head, body and feet - and YOU can select what type of creature you would like for each section: monster, bug, ghost, dog, owl, or kangaroo - and this programme mashes them together to make you a beautiful, abhorrence of nature. \n\n Would you like a fully randomly-automated creature? \nOr would you like to choose the parts? \n");
+
+Console.Write("'Random' or 'Choose': ");
+string Answer = Console.ReadLine();
+
+Console.WriteLine($"You picked '{Answer}'.");
+
+switch (Answer.ToLower())
+{
+  case "random":
+  case "r":
+  Console.WriteLine("\nHere's your randomly generated dude: \n\n");
+  RandomCreature();
+  break;
+
+  case "choose":
+  case "choice":
+  case "c":
+
+  Console.WriteLine("Type in bug, monster, ghost, dog, owl, or kangaroo - what type of head would you like? \n\n(you can choose to randomise any section if you don't type in anything on the list) \n\nHead: ");
+  string head = Console.ReadLine();
+  string Head = head.ToLower();
+  Console.WriteLine("What type of body would you like?\n\nBody: ");
+  string body = Console.ReadLine();
+  string Body = body.ToLower();
+  Console.WriteLine("What type of feet would you like? \n\nFeet: ");
+  string feet = Console.ReadLine();
+  string Feet = feet.ToLower();
+  Console.WriteLine("Here's your dude: \n\n");
+
+  BuildACreature(Head, Body, Feet); 
+  //creates a creature with the user's choices
+
+  break;
+  default:
+  Console.WriteLine("I'm afraid you didn't type a reply I can reocgnise! Please try 'dotnet run' to start again.");
+  break;
+
+}//End of Main
+
+
+
+    }
+
+    static void BuildACreature(string head = "RanHead", string body = "RanBody", string feet = "RanFeet")
+    { //turns BuildACreature() string input into numbers using TranslateToNumber() and then uses SwitchCase() to create the creature.
+    
+int headNum = TranslateToNumber(head);
+int bodyNum = TranslateToNumber(body);
+int feetNum = TranslateToNumber(feet);
+
+SwitchCase(headNum, bodyNum, feetNum);
+}
+
+    
+
+    static void RandomCreature() //randomly generates numbers and then puts these into SwitchCase to generate a fully randomly generated creature.
+    {
+Random randomNumber = new
+Random();
+int a = randomNumber.Next(1,7);
+int b = randomNumber.Next(1,7);
+int c = randomNumber.Next(1,7);
+SwitchCase(a, b, c);
+    } 
+
+static void SwitchCase(int head, int body, int feet)
+{ //This method creates the creature using input integers
+switch (head)
+{
+  case 1:
+  GhostHead();
+  break;
+  case 2:
+  BugHead();
+  break;
+  case 3:
+  MonsterHead();
+  break;
+  case 4:
+  DogHead();
+  break;
+  case 5:
+  KangarooHead();
+  break;
+  case 6:
+  OwlHead();
+  break;
+  default:
+  break;
+}
+
+switch (body)
+{
+case 1:
+GhostBody();
+break;
+case 2:
+BugBody();
+break;
+case 3:
+MonsterBody();
+break;
+case 4:
+DogBody();
+break;
+case 5:
+KangarooBody();
+break;
+case 6:
+OwlBody();
+break;
+default:
+break;
+}
+
+switch (feet)
+{
+case 1:
+GhostFeet();
+break;
+case 2:
+BugFeet();
+break;
+case 3:
+MonsterFeet();
+break;
+case 4:
+DogFeet();
+break;
+case 5:
+KangarooFeet();
+break;
+case 6:
+OwlFeet();
+break;
+default:
+break;
+}
+}
+
+static int TranslateToNumber(string creature)
+{
+switch (creature)
+{
+  case "ghost":
+  return 1;
+  //break;
+  case "bug":
+  return 2;
+  //break;
+  case "monster": case "moster": case "mosnter":
+  return 3;
+  //break;
+  case "dog":
+  return 4;
+  //break;
+  case "kangaroo": case "kanga": case "roo":
+  return 5;
+  //break;
+  case "owl": case "wol":
+  return 6;
+  //break;
+  case "RanHead":
+  case "RanBody":
+  case "RanFeet":
+  Random randomNumber = new
+  Random();
+  int a = randomNumber.Next(1,6);
+  return a;
+  //break;
+  default:
+  Random randoNumber = new
+  Random();
+  int b = randoNumber.Next(1,6);
+  return b;
+  //break;
+}
+}
+
+
+    static void GhostHead()
+    {
+      Console.WriteLine("     ..-..");
+      Console.WriteLine("    ( o o )");
+      Console.WriteLine("    |  O  |");
+    }
+
+    static void GhostBody()
+    {
+      Console.WriteLine("    |     |");
+      Console.WriteLine("    |     |");
+      Console.WriteLine("    |     |");
+    }
+
+    static void GhostFeet()
+    {
+      Console.WriteLine("    |     |");
+      Console.WriteLine("    |     |");
+      Console.WriteLine("    '~~~~~'");
+    }
+
+    static void BugHead()
+    {
+      Console.WriteLine("     /   \\");
+      Console.WriteLine("     \\. ./");
+      Console.WriteLine("    (o + o)");
+    }
+
+    static void BugBody()
+    {
+      Console.WriteLine("  --|  |  |--");
+      Console.WriteLine("  --|  |  |--");
+      Console.WriteLine("  --|  |  |--");
+    }
+
+    static void BugFeet()
+    {
+      Console.WriteLine("     v   v");
+      Console.WriteLine("     *****");
+    }
+
+    static void MonsterHead()
+    {
+      Console.WriteLine("     _____");
+      Console.WriteLine(" .-,;='';_),-.");
+      Console.WriteLine("  \\_\\(),()/_/");
+      Console.WriteLine("　  (,___,)");
+    }
+
+    static void MonsterBody()
+    {
+      Console.WriteLine("   ,-/`~`\\-,___");
+      Console.WriteLine("  / /).:.('--._)");
+      Console.WriteLine(" {_[ (_,_)");
+    }
+
+    static void MonsterFeet()
+    {
+      Console.WriteLine("    |  Y  |");
+      Console.WriteLine("   /   |   \\");
+      Console.WriteLine("   \"\"\"\" \"\"\"\"");
+    }
+
+    static void DogHead()
+    {
+      Console.WriteLine("     .-*-.  ");
+Console.WriteLine("    /|6 6|\\");
+Console.WriteLine("   {/(_0_)\\}");
+    }
+
+    static void DogBody()
+    {
+      Console.WriteLine("     {   }    _¬");
+Console.WriteLine("    {     }  / / ");
+Console.WriteLine("    { _^_  }/_/   ");
+    }
+
+    static void DogFeet()
+    {
+Console.WriteLine("    {}   {}  ");
+Console.WriteLine("    {}   {}  ");
+Console.WriteLine("   dd>  dd>");
+    }
+
+    static void KangarooHead()
+    {
+Console.WriteLine("   (\\-\"\"\"-/)  ");
+Console.WriteLine("    |     |   ");
+Console.WriteLine("    \\ ^ ^ / ");
+Console.WriteLine("     \\_o_/ ");
+    }
+
+    static void KangarooBody()
+    {
+//Console.WriteLine("   \\ (   ) / / /");
+
+Console.WriteLine("   /       \\   /\\ ");
+Console.WriteLine("  / \\_) (_/ \\ / /");
+Console.WriteLine(" |   (\\-/)   |_/  ");
+Console.WriteLine(" \\  --^o^--  /    ");
+Console.WriteLine("  \\ '.___.' /     ");
+    }
+
+    static void KangarooFeet()
+    {      
+Console.WriteLine(" /  /`   `\\/ \\  ");
+Console.WriteLine("(/./       \\.\\)  ");
+Console.WriteLine("`\"`         `\"`   ");
+    }
+
+    static void OwlHead()
+    {
+Console.WriteLine("     ^ _ ^");
+Console.WriteLine("    ( ovo )");
+    }
+
+    static void OwlBody()
+    {
+Console.WriteLine("   /'` ' `'\\ ");
+Console.WriteLine("   |'''''''|");
+Console.WriteLine("   |\\\\'''//|");
+    }
+
+    static void OwlFeet()
+    {
+      Console.WriteLine("     \"\"\"\"\"");
+    }
+
+
+  }
+}
+
+
